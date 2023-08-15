@@ -59,7 +59,6 @@ public class BookServiceImpl implements BookService{
 
     public  void updateBook (String id,Book book) throws  BooksCollectionException {
        Optional <Book> optionalBook =  booksRepo.findById(id);
-      Optional <Book>  bookWithSameTitle =  booksRepo.findBookByTitle(book.getTitle());
 
 
        if (optionalBook.isPresent()) {
@@ -68,6 +67,10 @@ public class BookServiceImpl implements BookService{
 //               throw new BooksCollectionException(BooksCollectionException.BookAlreadyExist());
 //           }
            Book bookToUpdate = optionalBook.get();
+
+
+
+
            bookToUpdate.setTitle(book.getTitle());
            bookToUpdate.setRating(book.getRating());
            bookToUpdate.setGenres(book.getGenres());
